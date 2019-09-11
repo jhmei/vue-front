@@ -1,28 +1,28 @@
 <template>
   <ul>
-    <li v-for="(user)  in users" :key="user.id">
-      {{user.id}}:{{user.name}}去你妹
+    <li v-for="item in list" :key="item.id">
+      {{item.id}}:{{item.name}}
     </li>
   </ul>
 </template>
 
 <script>
 import axios from 'axios';
+
 export default {
   name: 'app',
-  data(){
+  data() {
     return {
-      users:[]
+      list: []
     }
   },
-  mounted(){
-    axios.get('/api/users').then(response=>{
-      this.users = response.data;
-    });
+  mounted() {
+    axios.get('/api/list').then(response => {
+      this.list = response.data || []
+    })
   }
 }
 </script>
 
 <style>
-
 </style>
